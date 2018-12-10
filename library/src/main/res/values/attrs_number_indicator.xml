@@ -1,0 +1,9 @@
+<resources>
+    <declare-styleable name="NumberIndicator">
+        <attr name="number_indicator_index" format="integer"/>
+        <attr name="number_indicator_count" format="integer"/>
+        <attr name="number_indicator_gap" format="dimension|reference"/>
+        <attr name="number_indicator_text_color" format="color|reference"/>
+        <attr name="number_indicator_text_size" format="dimension|reference"/>
+    </declare-styleable>
+</resources>
