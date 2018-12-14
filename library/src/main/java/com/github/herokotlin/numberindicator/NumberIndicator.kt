@@ -24,7 +24,6 @@ class NumberIndicator : LinearLayout {
 
     }
 
-
     var index = -1
 
         set(value) {
@@ -34,7 +33,6 @@ class NumberIndicator : LinearLayout {
             field = value
             indexView.text = (value + 1).toString()
         }
-
 
     var count = -1
 
@@ -46,16 +44,25 @@ class NumberIndicator : LinearLayout {
             countView.text = value.toString()
         }
 
-    var gap = DEFAULT_GAP
+    var separator = ""
 
         set(value) {
             if (field == value) {
                 return
             }
             field = value
-            slashView.setPadding(value, 0, value, 0)
+            separatorView.text = value
         }
 
+    var gap = 0
+
+        set(value) {
+            if (field == value) {
+                return
+            }
+            field = value
+            separatorView.setPadding(value, 0, value, 0)
+        }
 
     var textColor = 0
 
@@ -66,9 +73,8 @@ class NumberIndicator : LinearLayout {
             field = value
             indexView.setTextColor(value)
             countView.setTextColor(value)
-            slashView.setTextColor(value)
+            separatorView.setTextColor(value)
         }
-
 
     var textSize = 0
 
@@ -79,7 +85,7 @@ class NumberIndicator : LinearLayout {
             field = value
             indexView.textSize = value.toFloat()
             countView.textSize = value.toFloat()
-            slashView.textSize = value.toFloat()
+            separatorView.textSize = value.toFloat()
         }
 
     constructor(context: Context) : super(context) {
@@ -104,6 +110,8 @@ class NumberIndicator : LinearLayout {
         index = typedArray.getInt(R.styleable.NumberIndicator_number_indicator_index, DEFAULT_INDEX)
 
         count = typedArray.getInt(R.styleable.NumberIndicator_number_indicator_count, DEFAULT_COUNT)
+
+        separator = typedArray.getString(R.styleable.NumberIndicator_number_indicator_separator)
 
         gap = typedArray.getDimensionPixelSize(
             R.styleable.NumberIndicator_number_indicator_gap,
