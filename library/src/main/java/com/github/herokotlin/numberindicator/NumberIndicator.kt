@@ -111,7 +111,7 @@ class NumberIndicator : LinearLayout {
 
         count = typedArray.getInt(R.styleable.NumberIndicator_number_indicator_count, DEFAULT_COUNT)
 
-        separator = typedArray.getString(R.styleable.NumberIndicator_number_indicator_separator)
+        separator = typedArray.getString(R.styleable.NumberIndicator_number_indicator_separator) ?: ""
 
         gap = typedArray.getDimensionPixelSize(
             R.styleable.NumberIndicator_number_indicator_gap,
