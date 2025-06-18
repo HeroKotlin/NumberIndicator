@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.LinearLayout
-import kotlinx.android.synthetic.main.number_indicator.view.*
+import com.github.herokotlin.numberindicator.databinding.NumberIndicatorBinding
 
 class NumberIndicator : LinearLayout {
 
@@ -24,6 +24,8 @@ class NumberIndicator : LinearLayout {
 
     }
 
+    private lateinit var binding: NumberIndicatorBinding
+
     var index = -1
 
         set(value) {
@@ -31,7 +33,7 @@ class NumberIndicator : LinearLayout {
                 return
             }
             field = value
-            indexView.text = (value + 1).toString()
+            binding.indexView.text = (value + 1).toString()
         }
 
     var count = -1
@@ -41,7 +43,7 @@ class NumberIndicator : LinearLayout {
                 return
             }
             field = value
-            countView.text = value.toString()
+            binding.countView.text = value.toString()
         }
 
     var separator = ""
@@ -51,7 +53,7 @@ class NumberIndicator : LinearLayout {
                 return
             }
             field = value
-            separatorView.text = value
+            binding.separatorView.text = value
         }
 
     var gap = 0
@@ -61,7 +63,7 @@ class NumberIndicator : LinearLayout {
                 return
             }
             field = value
-            separatorView.setPadding(value, 0, value, 0)
+            binding.separatorView.setPadding(value, 0, value, 0)
         }
 
     var textColor = 0
@@ -71,9 +73,9 @@ class NumberIndicator : LinearLayout {
                 return
             }
             field = value
-            indexView.setTextColor(value)
-            countView.setTextColor(value)
-            separatorView.setTextColor(value)
+            binding.indexView.setTextColor(value)
+            binding.countView.setTextColor(value)
+            binding.separatorView.setTextColor(value)
         }
 
     var textSize = 0
@@ -83,9 +85,9 @@ class NumberIndicator : LinearLayout {
                 return
             }
             field = value
-            indexView.textSize = value.toFloat()
-            countView.textSize = value.toFloat()
-            separatorView.textSize = value.toFloat()
+            binding.indexView.textSize = value.toFloat()
+            binding.countView.textSize = value.toFloat()
+            binding.separatorView.textSize = value.toFloat()
         }
 
     constructor(context: Context) : super(context) {
@@ -102,7 +104,7 @@ class NumberIndicator : LinearLayout {
 
     private fun init(attrs: AttributeSet?, defStyle: Int) {
 
-        LayoutInflater.from(context).inflate(R.layout.number_indicator, this)
+        binding = NumberIndicatorBinding.inflate(LayoutInflater.from(context), this, true)
 
         val typedArray = context.obtainStyledAttributes(
                 attrs, R.styleable.NumberIndicator, defStyle, 0)
